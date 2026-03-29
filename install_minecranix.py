@@ -17,7 +17,7 @@ MODPACK_NAME = "Minecranix"
 GITHUB_ZIP_URL = "https://github.com/crancorn-git/minecranix-modpack/archive/refs/heads/main.zip"
 
 # The NeoForge version you are using (e.g. "21.1.65" for MC 1.21.1)
-NEOFORGE_VERSION = "21.1.65"
+NEOFORGE_VERSION = "21.1.220"
 
 # ==========================================
 # ADVANCED SETTINGS (Usually don't need changing)
