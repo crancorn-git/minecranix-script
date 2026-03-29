@@ -1,0 +1,52 @@
+name: Build Installers
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build Windows EXE
+        run: pyinstaller --onefile --console --name "Install-Minecranix-Windows" install_minecranix.py
+
+      - name: Upload Windows EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Install-Minecranix-Windows
+          path: dist/Install-Minecranix-Windows.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build Mac Executable
+        run: pyinstaller --onefile --console --name "Install-Minecranix-Mac" install_minecranix.py
+
+      - name: Upload Mac Executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: Install-Minecranix-Mac
+          path: dist/Install-Minecranix-Mac
